@@ -10,7 +10,7 @@ import time
 logger = logging.getLogger('habitica_manage_members')
 logger.setLevel(logging.DEBUG)
 
-handler = RotatingFileHandler('./habitica-party-auto-management/logs/manage_members.log', maxBytes=1024*1024, backupCount=1)
+handler = RotatingFileHandler('./logs/manage_members.log', maxBytes=1024*1024, backupCount=1)
 handler.setLevel(logging.DEBUG)
 handler.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s - %(message)s'))
 
@@ -37,13 +37,13 @@ headers = {
     "Content-Type": "application/json"
 }
 
-with open("./habitica-party-auto-management/documents/new_members.md", "r") as f:
+with open("./documents/new_members.md", "r") as f:
     template_new = f.read()
 
-with open("./habitica-party-auto-management/documents/remove_PM.md", "r") as f:
+with open("./documents/remove_PM.md", "r") as f:
     template_message = f.read()
 
-with open("./habitica-party-auto-management/documents/remove_members.md", "r") as f:
+with open("./documents/remove_members.md", "r") as f:
     template_remove = f.read()
 
 def rate_limited_request(method, url, **kwargs):
