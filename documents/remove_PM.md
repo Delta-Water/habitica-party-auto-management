@@ -4,4 +4,4 @@ I'm sorry, but we've decided to remove you from the party because you haven't be
 
 If you want to rejoin us, please contact the mailbox in my profile. (It is invalid to send a private message!)
 
-###### by [`Github: Delta-Water`](https://github.com/Delta-Water/Habitica-Party/)
+#### by [`Delta-Water`](https://github.com/Delta-Water/habitica-party-auto-management/)

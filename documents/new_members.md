@@ -2,4 +2,4 @@
 
 {list_str}
 
-###### Powered by [`Github: Delta-Water`](https://github.com/Delta-Water/Habitica-Party/)
+#### Powered by [`Delta-Water`](https://github.com/Delta-Water/habitica-party-auto-management/)

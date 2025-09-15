@@ -4,4 +4,4 @@
 
 #### Reason: Not logged in for 4 days.
 
-###### Powered by [`Github: Delta-Water`](https://github.com/Delta-Water/Habitica-Party/)
+#### Powered by [`Delta-Water`](https://github.com/Delta-Water/habitica-party-auto-management/)

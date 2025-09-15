@@ -74,6 +74,6 @@ Existentialism counters nihilism with its core tenets. When confronting the cris
 
 You Don't have to join our [TG](https://t.me/+DuXPG1hVC8phYTVl) group. ~~*(It even has few people now.  ⦁֊⦁꧞)*~~
 
-by [`@DeltaWater`](https://habitica.com/profile/65f2c0bf-9ca5-461c-af41-a39c9c921878)
+by [`DeltaWater`](https://habitica.com/profile/65f2c0bf-9ca5-461c-af41-a39c9c921878)
 
 *Cuz I'm not good at speaking English, machine translation is used in many places, which may lead to inaccuracies in meaning. Feel free to inquire and correct, thank you for your understanding!*
