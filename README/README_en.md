@@ -36,6 +36,8 @@ This project provides an automated solution for managing Habitica parties, featu
    ```
 
 4. **Run the Scripts**  
+   - Automated execution:  
+      Use third-party scheduling tools on the target system to run.
    - Manual Execution:  
      - Manage Members (Remove inactive members and invite new ones):  
        ```bash
