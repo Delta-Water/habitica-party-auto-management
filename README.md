@@ -36,10 +36,7 @@
    ```
 
 4. **运行脚本**  
-   - 推荐方式（定时执行）：  
-     使用 Windows 任务计划程序设置定时任务，定期执行 `./scripts/start.py`。
-   
-   - 手动执行（可选）：  
+   - 手动执行：  
      - 管理成员（移除不活跃成员并邀请新成员）：  
        ```bash
        python scripts/manage_members.py

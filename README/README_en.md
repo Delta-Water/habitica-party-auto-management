@@ -36,10 +36,7 @@ This project provides an automated solution for managing Habitica parties, featu
    ```
 
 4. **Run the Scripts**  
-   - Recommended Method (Scheduled Execution):  
-     Use the Windows Task Scheduler to set up a scheduled task for regularly executing `./start.py`.
-   
-   - Manual Execution (Optional):  
+   - Manual Execution:  
      - Manage Members (Remove inactive members and invite new ones):  
        ```bash
        python scripts/manage_members.py
