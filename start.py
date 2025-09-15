@@ -3,8 +3,8 @@ import sys
 
 # 要执行的脚本列表
 scripts = [
-    "./scripts/manage_members.py",
-    "./scripts/update_description.py", 
+    "./habitica-party-auto-management/scripts/manage_members.py",
+    "./habitica-party-auto-management/scripts/update_description.py", 
 ]
 
 python_path = "C:\\Users\\36273\\AppData\\Local\\Programs\\Python\\Python313\\python.exe"  # 替换为你的 Python 可执行文件路径
