@@ -29,7 +29,7 @@ This project provides an automated solution for managing Habitica parties, featu
    ```
 
 3. **Configure Environment Variables**  
-   Configure your Habitica User ID and API Key in the `.env` file located in the `./scripts` directory:  
+   Store your Habitica User ID and API Key in the repository root `.env` file. For backward compatibility, `./scripts/.env` is still supported, but the root `.env` takes precedence:  
    ```
    HABITICA_USER_ID=Your User ID
    HABITICA_API_KEY=Your API Key
@@ -37,7 +37,7 @@ This project provides an automated solution for managing Habitica parties, featu
 
 4. **Run the Scripts**  
    - Automated execution:  
-     - Use third-party scheduling tools on the target system to run.
+      Use third-party scheduling tools on the target system to run.
    - Manual Execution:  
      - Manage Members (Remove inactive members and invite new ones):  
        ```bash
@@ -49,7 +49,7 @@ This project provides an automated solution for managing Habitica parties, featu
        ```
 
 5. **Customize Message Templates**  
-   Modify the party description templates and the messages sent when removing members in the `./scripts/documents/` directory as needed.
+   Modify the party description templates and the messages sent when removing members in the `./documents/` directory as needed.
 
 ## Logging and Debugging
 

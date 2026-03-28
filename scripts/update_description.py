@@ -6,6 +6,7 @@ from datetime import datetime, timezone
 import logging
 from logging.handlers import RotatingFileHandler
 import time
+from pathlib import Path
 
 # 设置日志
 logger = logging.getLogger('habitica_update_description')
@@ -22,13 +23,25 @@ console_handler.setFormatter(logging.Formatter('%(asctime)s - %(name)s - %(level
 logger.addHandler(handler)
 logger.addHandler(console_handler)
 
-load_dotenv()
+BASE_DIR = Path(__file__).resolve().parent.parent
+ROOT_ENV_PATH = BASE_DIR / ".env"
+LEGACY_ENV_PATH = BASE_DIR / "scripts" / ".env"
+
+
+def load_environment():
+    # Keep supporting the original scripts/.env location while preferring repo-root .env.
+    load_dotenv(LEGACY_ENV_PATH, override=False)
+    load_dotenv(ROOT_ENV_PATH, override=True)
+
+
+load_environment()
 HABITICA_USER_ID = os.getenv("HABITICA_USER_ID")
 HABITICA_API_KEY = os.getenv("HABITICA_API_KEY")
 
 # 全局变量
 last_request_time = 0
 request_interval = 2  # 默认请求间隔为1秒
+
 
 def rate_limited_request(method, url, **kwargs):
     global last_request_time
@@ -41,6 +54,7 @@ def rate_limited_request(method, url, **kwargs):
     logger.debug(f"Request: {method} {url}")
     return response
 
+
 def get_json_response(response):
     try:
         return response.json()
@@ -48,8 +62,10 @@ def get_json_response(response):
         logger.error("Invalid JSON response received.")
         return None
 
+
 def log_response_error(response, action):
     logger.error(f"{action} failed: Status code {response.status_code}\nHeaders: {response.headers}\nText: {response.text}")
+
 
 def get_daily_sentence():
     url = "https://sentence.iciba.com/?c=dailysentence&m=getTodaySentence"
@@ -59,6 +75,7 @@ def get_daily_sentence():
     else:
         log_response_error(response, "Getting party data")
         return {}
+
 
 def get_habitica_party_data(headers):
     url = "https://habitica.com/api/v3/groups/party/members"
@@ -76,6 +93,7 @@ def get_habitica_party_data(headers):
         log_response_error(response, "Getting party data")
         return []
 
+
 def get_member_details(member, headers):
     member_id = member['id']
     url = f'https://habitica.com/api/v3/members/{member_id}'
@@ -90,17 +108,19 @@ def get_member_details(member, headers):
         log_response_error(member_response, "Getting details for member")
         return None
 
+
 def calculate_duration(last_login_time_str):
     last_login_time = datetime.strptime(last_login_time_str, "%Y-%m-%dT%H:%M:%S.%fZ")
     last_login_time = last_login_time.replace(tzinfo=timezone.utc)
     current_time = datetime.now(timezone.utc)
     return current_time - last_login_time
 
+
 def format_duration(duration):
     days = duration.days
     hours, remainder = divmod(duration.seconds, 3600)
     minutes, _ = divmod(remainder, 60)
-    
+
     time_parts = []
     if days:
         time_parts.append(f"{days}d")
@@ -108,11 +128,13 @@ def format_duration(duration):
         time_parts.append(f"{hours}h")
     if minutes:
         time_parts.append(f"{minutes}m")
-    
+
     return ' '.join(time_parts) if time_parts else "just now"
+
 
 def format_current_time():
     return datetime.now(timezone.utc).strftime('%m-%d %I:%M %p, %Z')
+
 
 def update_party_description(content, translation, members_str, time_str, headers):
     url = "https://habitica.com/api/v3/groups/party"
@@ -129,6 +151,7 @@ def update_party_description(content, translation, members_str, time_str, header
             log_response_error(response, "Getting party data")
     except Exception as e:
         logger.error(f"An error occurred while updating the party description: {e}")
+
 
 def main():
     logger.info("Starting Habitica party management script: update_description.")
@@ -152,6 +175,7 @@ def main():
     time_str = format_current_time()
 
     update_party_description(content, translation, members_str, time_str, headers)
+
 
 if __name__ == "__main__":
     main()
